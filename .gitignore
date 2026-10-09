@@ -42,4 +42,4 @@ Thumbs.db
 .cursor/
 
 
-/data/*
+/data/*.jsonl

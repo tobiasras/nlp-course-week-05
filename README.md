@@ -2,6 +2,9 @@
 
 FastAPI backend on port **8000**.
 
+Add jsonl data to the data/ <-- here
+
+
 ## Run
 
 ```bash
