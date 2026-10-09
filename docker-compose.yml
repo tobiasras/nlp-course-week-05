@@ -6,6 +6,24 @@ services:
     container_name: fastapi_app
     ports:
       - "8000:8000"
+    environment:
+      COURSES_PATH: /data/dtu_courses.jsonl
     volumes:
       - ./backend:/app
+      - ./data:/data:ro
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: dockerfile
+    container_name: ir_ui
+    ports:
+      - "8001:8001"
+    environment:
+      IR_SERVICE: http://backend:8000
+    volumes:
+      - ./ui:/app
+    depends_on:
+      - backend
+    command: uvicorn main:app --host 0.0.0.0 --port 8001 --reload

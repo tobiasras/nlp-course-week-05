@@ -37,6 +37,7 @@ http://localhost:8001
 
 from __future__ import annotations
 
+import os
 import time
 from typing import Any, Dict, List
 
@@ -50,7 +51,7 @@ app = FastAPI()
 # Configuration
 # ---------------------------------------------------------------------
 
-IR_SERVICE = "http://localhost:8000"
+IR_SERVICE = os.environ.get("IR_SERVICE", "http://localhost:8000")
 
 REQUEST_TIMEOUT = 5.0
 
